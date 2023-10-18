@@ -10,6 +10,8 @@ package main
 
 import (
 	"fmt"
+	"math"
+	"string"
 )
 
 type cardTest struct {
