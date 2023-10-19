@@ -18,7 +18,7 @@ package main
 import (
 	"fmt"
 	"math"
-	"string"
+	"strings"
 	"errors"
 )
 
@@ -94,7 +94,7 @@ func newDeck() (deck Deck) {
 				value:      values[i],
 				suit:       suits[j],
 				isFaceCard: faceCard,
-				color:      string(cardColor),
+				color:      rune(cardColor),
 			}
 			deck = append(deck, card)
 		}
