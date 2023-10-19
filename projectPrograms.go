@@ -1,15 +1,9 @@
-// Program 1:
-//TODO:
 
-// Program 2
-//TODO:
-
-// Program 3:
-// TODO:
 package main
 
 import (
 	"fmt"
+	"errors"
 	//"math"
 	//"string"
 )
@@ -65,3 +59,14 @@ func main() {
 
 	fmt.Println(deck)
 }
+
+func exceptionHandling error{
+	//Jasmine
+	if {
+		return errors.Errorf("Has failed")
+	}
+	else{
+		
+	}
+}
+
