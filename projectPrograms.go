@@ -145,6 +145,37 @@ func main() {
 
 	// Two Rune Methods:
 	// 1.
+	targetRune := 'B' //Blue
+
+	index, err := deck.findCardIndexByRune(targetRune)
+
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Printf("The first card of the color '%c' is at index %d\n", targetRune, index)
+	}
+	//Showing the error handling when an invalid rune is used
+	targetRune = 'C' //Cyan
+
+	index, err = deck.findCardIndexByRune(targetRune)
+
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Printf("The first card of the color '%c' is at index %d\n", targetRune, index)
+	}
 	// 2.
 
+}
+//findCardIndexByRune method. Contains exception handling for program 3.
+func (d Deck) findCardIndexByRune(targetRune rune) (int, error) {
+	targetRuneStr := string(targetRune) // Convert targetRune to a string
+	for i, card := range d {
+		cardColorStr := string(card.color) // Convert card.color to a string
+		if strings.HasPrefix(cardColorStr, targetRuneStr) {
+			return i, nil
+		}
+	}
+
+	return -1, fmt.Errorf("No card of color '%c' found in the deck", targetRune)
 }
