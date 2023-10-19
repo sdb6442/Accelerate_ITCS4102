@@ -10,56 +10,58 @@ package main
 
 import (
 	"fmt"
-	"math"
-	"string"
+	//"math"
+	//"string"
 )
 
-type cardTest struct {
+type cardMaker struct {
 	value      int
 	suit       string
 	isFaceCard bool
-	color      rune
+	color      string
 }
 
-type Deck []cardTest
+type Deck []cardMaker
 
-func new() (deck Deck) {
-	//card := cardTest{1, "Heart", true, 'R'}
-
+// Creates deck of cards
+func newDeck() (deck Deck) {
 	//jack = 11 queen=12 king= 13 ace=14
 	values := [13]int{2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}
 
-	// Valid suits include Heart, Diamond, Club & Spade
+	//suits include Heart, Diamond, Club, Spade
 	suits := [4]string{"Heart", "Diamond", "Club", "Spade"}
 
-	//faceCards := []bool{false,true}
-
-	//color:= [] rune{'R','B'}
+	var cardColor rune
 	var faceCard bool
-	faceCard = false
+
 	for i := 0; i < len(values); i++ {
-		for n := 0; n < len(suits); n++ {
+		for j := 0; j < len(suits); j++ {
 			if values[i] > 10 {
 				faceCard = true
+			} else {
+				faceCard = false
 			}
-			card := cardTest{
+			//Switches card color based on suite. 82 = 'R'(Red)   66= 'B' (Black)
+			if suits[j] == "Heart" || suits[j] == "Diamond" {
+				cardColor = 'R'
+			} else {
+				cardColor = 'B'
+			}
+			//Brian-Converted rune cardColor to string for output
+			card := cardMaker{
 				value:      values[i],
-				suit:       suits[n],
+				suit:       suits[j],
 				isFaceCard: faceCard,
-				color:      'R',
+				color:      string(cardColor),
 			}
 			deck = append(deck, card)
 		}
 	}
 	return deck
-
-	//fmt.Printf("%+v\n", card)
-
-	//fmt.Println(card)
 }
 
 func main() {
-	deck := new()
+	deck := newDeck()
 
 	fmt.Println(deck)
 }
