@@ -6,7 +6,11 @@
 // Date: 10/19/2023
 
 // Program 1:
-//TODO:
+// The 8 methods use different functions from the standard library in the main method of this program.
+//Program 2:
+//The assignment contains various for loops/if else statements, and uses struct for the cards, and an array for the deck of cards
+//Program 3:
+//The method findCardIndexByRune handles errors and 
 
 package main
 
