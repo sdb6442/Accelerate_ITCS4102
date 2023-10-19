@@ -163,8 +163,9 @@ func main() {
 	
 
 	// Two Boolean Methods:
-	// 1.
-	// 2.
+	// 1. 
+	// 2. Picks a random card and determines if it is a face card. Uses a random function from the Standard library. 
+	//The method i used is located under the main method.
 	randomCard := deck.getRandomCard()
 
 	if randomCard.isFaceCard {
@@ -174,7 +175,8 @@ func main() {
 	}
 
 	// Two Rune Methods:
-	// 1.
+	// 1. Determines what the index of the first card of a selected rune. Uses B (Black) and C (Invalid input) as examples
+	//Uses the findcardindexbyrune method, which is also located under the main mehthod. uses HasPrefix() function from standard library
 	targetRune := 'B' //Blue
 
 	index, err := deck.findCardIndexByRune(targetRune)
@@ -195,7 +197,6 @@ func main() {
 		fmt.Printf("The first card of the color '%c' is at index %d\n", targetRune, index)
 	}
 	// 2. Picks 5 random cards using time.now and rand.new(source) then displays the 5 associated color runes
-	//
 	source := rand.NewSource(time.Now().UnixNano())
 	r := rand.New(source)
 	randomColors := []rune{}
@@ -206,7 +207,7 @@ func main() {
 	fmt.Printf("Randomly selected 5 card colors: %c %c %c %c %c\n", randomColors[0], randomColors[1], randomColors[2], randomColors[3], randomColors[4])
 
 }
-// getRandomCard() for the boolean method
+// getRandomCard() Generates a random card for boolean method #2
 func (d Deck) getRandomCard() cardMaker {
 	source := rand.NewSource(time.Now().UnixNano())
 	r := rand.New(source)
@@ -214,7 +215,7 @@ func (d Deck) getRandomCard() cardMaker {
 	print("The index of the random card was: ", randomIndex, "\n")
 	return d[randomIndex]
 }
-//findCardIndexByRune method. Contains exception handling for program 3.
+//findCardIndexByRune method for the rune methods. Contains exception handling for program 3.
 func (d Deck) findCardIndexByRune(targetRune rune) (int, error) {
 	targetRuneStr := string(targetRune) // Convert targetRune to a string
 	for i, card := range d {
