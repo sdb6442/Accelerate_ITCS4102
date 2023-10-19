@@ -17,18 +17,53 @@ package main
 
 import (
 	"fmt"
-	"strings"
-	//"math"
+	"math"
+	"string"
+	"errors"
 )
 
 type cardMaker struct {
 	value      int
 	suit       string
 	isFaceCard bool
-	color      string
+	color      rune
+}
+type player struct{
+	name 	string
+	hand[] cardMaker
+	status 	bool
+}
+type errorString struct {
+    s string
 }
 
-type Deck []cardMaker
+func (e *errorString) Error() string {
+    return e.s
+}
+type hand []player
+type Deck []cardMaker 
+
+func New(text string) error {
+    return &errorString{text}
+}
+func newPlayer()(Nplayer player){
+	fmt.Println("Enter Name: ")
+	fmt.Scanln(&Nplayer.name)
+	if Nplayer.name ==""{
+	    errors.New("Name is empty")
+	}
+	Nplayer.status = true
+	return Nplayer
+}
+func cngStatus (player player){
+	if player.status == true {
+		player.status = false
+	}else{
+		player.status = true
+	}
+	fmt.Println(player.name," Player status:",player.status)
+}
+
 
 // Creates deck of cards
 func newDeck() (deck Deck) {
@@ -68,7 +103,10 @@ func newDeck() (deck Deck) {
 }
 
 func main() {
+	var turn float32 
 	deck := newDeck()
+	player1 := newPlayer()
+	player1.hand = make([]cardMaker,0,7)
 
 	// Print deck of cards
 	fmt.Println("Deck of cards: ")
