@@ -135,7 +135,7 @@ func main() {
 	fmt.Println("\nNumber of Heart cards: ", heartCount)
 
 
-	// 2. Compare two cards suits and return if theyre similar or not.
+	// 2. Jasmine  -  Compare() two cards suits and return if theyre similar or not.
 	// If they are different, it will move onto the next card until there is a match.
 	var currentSuit string
 	var nextSuit string
@@ -163,8 +163,13 @@ func main() {
 	
 
 	// Two Boolean Methods:
-	// 1.
-	// 2.
+	// 1. 
+
+
+	// 2. Jasmine  - Returns boolean if contains the red card indicator or not
+
+
+
 
 	// Two Rune Methods:
 	// 1.
