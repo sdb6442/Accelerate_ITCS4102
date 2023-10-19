@@ -165,6 +165,13 @@ func main() {
 	// Two Boolean Methods:
 	// 1.
 	// 2.
+	randomCard := deck.getRandomCard()
+
+	if randomCard.isFaceCard {
+		fmt.Println("This card is a face card")
+	} else {
+		fmt.Println("This card is not a face card")
+	}
 
 	// Two Rune Methods:
 	// 1.
@@ -199,7 +206,14 @@ func main() {
 	fmt.Printf("Randomly selected 5 card colors: %c %c %c %c %c\n", randomColors[0], randomColors[1], randomColors[2], randomColors[3], randomColors[4])
 
 }
-
+// getRandomCard() for the boolean method
+func (d Deck) getRandomCard() cardMaker {
+	source := rand.NewSource(time.Now().UnixNano())
+	r := rand.New(source)
+	randomIndex := r.Intn(len(d))
+	print("The index of the random card was: ", randomIndex, "\n")
+	return d[randomIndex]
+}
 //findCardIndexByRune method. Contains exception handling for program 3.
 func (d Deck) findCardIndexByRune(targetRune rune) (int, error) {
 	targetRuneStr := string(targetRune) // Convert targetRune to a string
