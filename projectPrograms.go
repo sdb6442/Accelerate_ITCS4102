@@ -16,10 +16,11 @@
 package main
 
 import (
-	"fmt"
-	"math"
-	"strings"
 	"errors"
+	"fmt"
+	"math/rand"
+	"strings"
+	"time"
 )
 
 type cardMaker struct {
@@ -164,7 +165,16 @@ func main() {
 	} else {
 		fmt.Printf("The first card of the color '%c' is at index %d\n", targetRune, index)
 	}
-	// 2.
+	// 2. Picks 5 random cards using time.now and rand.new(source) then displays the 5 associated color runes
+	//
+	source := rand.NewSource(time.Now().UnixNano())
+	r := rand.New(source)
+	randomColors := []rune{}
+	for i := 0; i < 5; i++ {
+		randomIndex := r.Intn(len(deck))
+		randomColors = append(randomColors, deck[randomIndex].color)
+	}
+	fmt.Printf("Randomly selected 5 card colors: %c %c %c %c %c\n", randomColors[0], randomColors[1], randomColors[2], randomColors[3], randomColors[4])
 
 }
 //findCardIndexByRune method. Contains exception handling for program 3.
