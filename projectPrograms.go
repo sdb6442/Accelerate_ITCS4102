@@ -110,7 +110,7 @@ func main() {
 	player1.hand = make([]cardMaker, 0, 7)
 
 	// Print deck of cards
-	fmt.Println("Deck of cards: ")
+	fmt.Println("Data Structures(Deck of cards, struct and arrays): ")
 	fmt.Println(deck)
 
 	// PROGRAM 1: 8 Methods showcasing data manipulation
@@ -120,11 +120,14 @@ func main() {
 	card1 := deck[1]
 	card2 := deck[13]
 	maxCard := max(card1.value, card2.value)
-	fmt.Println("\nCard 1: ", card1, " Card 2: ", card2, " Value of highest card: ", maxCard)
+
+	fmt.Println("\nInt Method 1(comparing max card values,max()):")
+	fmt.Println("Card 1: ", card1, " Card 2: ", card2, " Value of highest card: ", maxCard)
 
 	// 2. (Samuel) - Min card value when comparing two cards - min()
 	minCard := min(card1.value, card2.value)
-	fmt.Println("\nCard 1: ", card1, " Card 2: ", card2, " Value of lowest card: ", minCard)
+	fmt.Println("\nInt Method 2(comparing min card values, min()):")
+	fmt.Println("Card 1: ", card1, " Card 2: ", card2, " Value of lowest card: ", minCard)
 
 	// Two String Methods:
 	// 1. (Samuel) - Count the number of Heart cards by creating a string consisting of each occurance of
@@ -136,7 +139,8 @@ func main() {
 		}
 	}
 	heartCount := strings.Count(heartString, "Heart")
-	fmt.Println("\nNumber of Heart cards: ", heartCount)
+	fmt.Println("\nString Method 1(counting Heart cards, Count()):")
+	fmt.Println("Number of Heart cards: ", heartCount)
 
 	// 2. (Jasmine)  -  Compare() two cards suits and return if theyre similar or not.
 	// If they are different, it will move onto the next card until there is a match.
@@ -144,6 +148,7 @@ func main() {
 	var nextSuit string
 	var suitMatcher int
 
+	fmt.Println("\nString Method 2(comparing card suits, Compare()):")
 	for i := 0; i < len(deck); i++ {
 		currentSuit = deck[i].suit
 		for j := i + 1; j < len(deck); {
@@ -166,6 +171,7 @@ func main() {
 	// Two Boolean Methods:
 	// 1. (Jasmine)  - Returns boolean if it contains() the red card indicator or not
 	var isRed bool
+	fmt.Println("\nBoolean Method 1(checking if card is red or black, Contains()):")
 	for i := 0; i < len(deck); i++ {
 		isRed = strings.Contains(string(deck[i].color), "R")
 		fmt.Println(deck[i])
@@ -183,6 +189,7 @@ func main() {
 	//The method i used is located under the main method.
 	randomCard := deck.getRandomCard()
 
+	fmt.Println("\nBoolean Method 2(checking if card is a face card, Intn()):")
 	if randomCard.isFaceCard {
 		fmt.Println("This card is a face card")
 	} else {
@@ -196,6 +203,7 @@ func main() {
 
 	index, err := deck.findCardIndexByRune(targetRune)
 
+	fmt.Println("\nRune Method 1(determine index of card rune, HasPrefix()):")
 	if err != nil {
 		fmt.Println(err)
 	} else {
@@ -204,6 +212,7 @@ func main() {
 	//Showing the error handling when an invalid rune is used
 	targetRune = 'C' //Cyan
 
+	fmt.Println("\nexception handling(find card index by rune):")
 	index, err = deck.findCardIndexByRune(targetRune)
 
 	if err != nil {
@@ -221,15 +230,18 @@ func main() {
 		randomIndex := r.Intn(len(deck))
 		randomColors = append(randomColors, deck[randomIndex].color)
 	}
+	fmt.Println("\nRune Method 2(display random card rune color, Intn()):")
 	fmt.Printf("Randomly selected 5 card colors: %c %c %c %c %c\n", randomColors[0], randomColors[1], randomColors[2], randomColors[3], randomColors[4])
 
 }
 
 // (Alex) getRandomCard() Generates a random card for boolean method #2
+
 func (d Deck) getRandomCard() cardMaker {
 	source := rand.NewSource(time.Now().UnixNano())
 	r := rand.New(source)
 	randomIndex := r.Intn(len(d))
+	fmt.Println("\nexception handling(generate random card):")
 	print("The index of the random card was: ", randomIndex, "\n")
 	return d[randomIndex]
 }
